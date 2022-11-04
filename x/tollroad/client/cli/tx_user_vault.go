@@ -11,12 +11,12 @@ import (
 
 func CmdCreateUserVault() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-user-vault [owner] [road-operator-index] [token] [balance]",
+		Use:   "create-user-vault [creator] [road-operator-index] [token] [balance]",
 		Short: "Create a new UserVault",
 		Args:  cobra.ExactArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			// Get indexes
-			indexOwner := args[0]
+			indexCreator := args[0]
 			indexRoadOperatorIndex := args[1]
 			indexToken := args[2]
 
@@ -33,7 +33,7 @@ func CmdCreateUserVault() *cobra.Command {
 
 			msg := types.NewMsgCreateUserVault(
 				clientCtx.GetFromAddress().String(),
-				indexOwner,
+				indexCreator,
 				indexRoadOperatorIndex,
 				indexToken,
 				argBalance,
@@ -52,12 +52,12 @@ func CmdCreateUserVault() *cobra.Command {
 
 func CmdUpdateUserVault() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "update-user-vault [owner] [road-operator-index] [token] [balance]",
+		Use:   "update-user-vault [creator] [road-operator-index] [token] [balance]",
 		Short: "Update a UserVault",
 		Args:  cobra.ExactArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			// Get indexes
-			indexOwner := args[0]
+			indexCreator := args[0]
 			indexRoadOperatorIndex := args[1]
 			indexToken := args[2]
 
@@ -74,7 +74,7 @@ func CmdUpdateUserVault() *cobra.Command {
 
 			msg := types.NewMsgUpdateUserVault(
 				clientCtx.GetFromAddress().String(),
-				indexOwner,
+				indexCreator,
 				indexRoadOperatorIndex,
 				indexToken,
 				argBalance,
@@ -93,11 +93,11 @@ func CmdUpdateUserVault() *cobra.Command {
 
 func CmdDeleteUserVault() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "delete-user-vault [owner] [road-operator-index] [token]",
+		Use:   "delete-user-vault [creator] [road-operator-index] [token]",
 		Short: "Delete a UserVault",
 		Args:  cobra.ExactArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
-			indexOwner := args[0]
+			indexCreator := args[0]
 			indexRoadOperatorIndex := args[1]
 			indexToken := args[2]
 
@@ -108,7 +108,7 @@ func CmdDeleteUserVault() *cobra.Command {
 
 			msg := types.NewMsgDeleteUserVault(
 				clientCtx.GetFromAddress().String(),
-				indexOwner,
+				indexCreator,
 				indexRoadOperatorIndex,
 				indexToken,
 			)
