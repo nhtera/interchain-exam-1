@@ -117,7 +117,6 @@ func NewMsgDeleteUserVault(
 ) *MsgDeleteUserVault {
 	return &MsgDeleteUserVault{
 		Creator:           creator,
-		Owner:             owner,
 		RoadOperatorIndex: roadOperatorIndex,
 		Token:             token,
 	}

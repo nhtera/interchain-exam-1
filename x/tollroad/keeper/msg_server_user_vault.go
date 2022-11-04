@@ -73,7 +73,7 @@ func (k msgServer) DeleteUserVault(goCtx context.Context, msg *types.MsgDeleteUs
 	// Check if the value exists
 	valFound, isFound := k.GetUserVault(
 		ctx,
-		msg.Owner,
+		msg.Creator,
 		msg.RoadOperatorIndex,
 		msg.Token,
 	)
@@ -88,7 +88,7 @@ func (k msgServer) DeleteUserVault(goCtx context.Context, msg *types.MsgDeleteUs
 
 	k.RemoveUserVault(
 		ctx,
-		msg.Owner,
+		msg.Creator,
 		msg.RoadOperatorIndex,
 		msg.Token,
 	)

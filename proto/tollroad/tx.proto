@@ -64,9 +64,8 @@ message MsgUpdateUserVaultResponse {}
 
 message MsgDeleteUserVault {
   string creator = 1;
-  string owner = 2;
-  string roadOperatorIndex = 3;
-  string token = 4;
+  string roadOperatorIndex = 2;
+  string token = 3;
 }
 message MsgDeleteUserVaultResponse {}
 

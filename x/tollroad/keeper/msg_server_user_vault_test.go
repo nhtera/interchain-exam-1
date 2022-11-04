@@ -112,7 +112,6 @@ func TestUserVaultMsgServerDelete(t *testing.T) {
 		{
 			desc: "Completed",
 			request: &types.MsgDeleteUserVault{Creator: creator,
-				Owner:             strconv.Itoa(0),
 				RoadOperatorIndex: strconv.Itoa(0),
 				Token:             strconv.Itoa(0),
 			},
@@ -120,7 +119,6 @@ func TestUserVaultMsgServerDelete(t *testing.T) {
 		{
 			desc: "Unauthorized",
 			request: &types.MsgDeleteUserVault{Creator: "B",
-				Owner:             strconv.Itoa(0),
 				RoadOperatorIndex: strconv.Itoa(0),
 				Token:             strconv.Itoa(0),
 			},
@@ -129,7 +127,6 @@ func TestUserVaultMsgServerDelete(t *testing.T) {
 		{
 			desc: "KeyNotFound",
 			request: &types.MsgDeleteUserVault{Creator: creator,
-				Owner:             strconv.Itoa(100000),
 				RoadOperatorIndex: strconv.Itoa(100000),
 				Token:             strconv.Itoa(100000),
 			},
@@ -152,7 +149,7 @@ func TestUserVaultMsgServerDelete(t *testing.T) {
 			} else {
 				require.NoError(t, err)
 				_, found := k.GetUserVault(ctx,
-					tc.request.Owner,
+					tc.request.Creator,
 					tc.request.RoadOperatorIndex,
 					tc.request.Token,
 				)
