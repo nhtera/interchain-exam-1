@@ -8,6 +8,5 @@ message UserVault {
   string roadOperatorIndex = 2; 
   string token = 3; 
   uint64 balance = 4; 
-  string creator = 5;
 }
 

@@ -71,14 +71,12 @@ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 		},
 		UserVaultList: []types.UserVault{
 			{
-				Creator:           sample.AccAddress(),
-				Owner:             "0",
+				Owner:             sample.AccAddress(),
 				RoadOperatorIndex: "0",
 				Token:             "0",
 			},
 			{
-				Creator:           sample.AccAddress(),
-				Owner:             "1",
+				Owner:             sample.AccAddress(),
 				RoadOperatorIndex: "1",
 				Token:             "1",
 			},

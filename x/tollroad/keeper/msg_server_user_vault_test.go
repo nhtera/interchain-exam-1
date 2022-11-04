@@ -35,7 +35,7 @@ func TestUserVaultMsgServerCreate(t *testing.T) {
 			expected.Token,
 		)
 		require.True(t, found)
-		require.Equal(t, expected.Creator, rst.Creator)
+		require.Equal(t, expected.Creator, rst.Owner)
 	}
 }
 
@@ -97,7 +97,7 @@ func TestUserVaultMsgServerUpdate(t *testing.T) {
 					expected.Token,
 				)
 				require.True(t, found)
-				require.Equal(t, expected.Creator, rst.Creator)
+				require.Equal(t, expected.Creator, rst.Owner)
 			}
 		})
 	}
