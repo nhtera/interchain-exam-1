@@ -24,3 +24,12 @@ func KeyPrefix(p string) []byte {
 const (
 	SystemInfoKey = "SystemInfo-value-"
 )
+
+const (
+	OperatorCreatedEventType              = "new-road-operator-created"
+	OperatorCreatedEventCreator           = "creator"
+	OperatorCreatedEventRoadOperatorIndex = "road-operator-index"
+	OperatorCreatedEventName              = "name"
+	OperatorCreatedEventToken             = "token"
+	OperatorCreatedEventActive            = "active"
+)

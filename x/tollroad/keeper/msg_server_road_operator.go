@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/b9lab/toll-road/x/tollroad/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -11,10 +12,16 @@ import (
 func (k msgServer) CreateRoadOperator(goCtx context.Context, msg *types.MsgCreateRoadOperator) (*types.MsgCreateRoadOperatorResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
+	systemInfo, found := k.Keeper.GetSystemInfo(ctx)
+	if !found {
+		panic("SystemInfo not found")
+	}
+	newOperatorId := strconv.FormatUint(systemInfo.NextOperatorId, 10)
+
 	// Check if the value already exists
 	_, isFound := k.GetRoadOperator(
 		ctx,
-		"0",
+		newOperatorId,
 	)
 	if isFound {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, "index already set")
@@ -22,7 +29,7 @@ func (k msgServer) CreateRoadOperator(goCtx context.Context, msg *types.MsgCreat
 
 	var roadOperator = types.RoadOperator{
 		Creator: msg.Creator,
-		Index:   "0",
+		Index:   newOperatorId,
 		Name:    msg.Name,
 		Token:   msg.Token,
 		Active:  msg.Active,
@@ -32,7 +39,23 @@ func (k msgServer) CreateRoadOperator(goCtx context.Context, msg *types.MsgCreat
 		ctx,
 		roadOperator,
 	)
-	return &types.MsgCreateRoadOperatorResponse{}, nil
+
+	systemInfo.NextOperatorId++
+	k.SetSystemInfo(ctx, systemInfo)
+
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent(types.OperatorCreatedEventType,
+			sdk.NewAttribute(types.OperatorCreatedEventCreator, msg.Creator),
+			sdk.NewAttribute(types.OperatorCreatedEventRoadOperatorIndex, newOperatorId),
+			sdk.NewAttribute(types.OperatorCreatedEventName, msg.Name),
+			sdk.NewAttribute(types.OperatorCreatedEventToken, msg.Token),
+			sdk.NewAttribute(types.OperatorCreatedEventActive, strconv.FormatBool(msg.Active)),
+		),
+	)
+
+	return &types.MsgCreateRoadOperatorResponse{
+		Index: newOperatorId,
+	}, nil
 }
 
 func (k msgServer) UpdateRoadOperator(goCtx context.Context, msg *types.MsgUpdateRoadOperator) (*types.MsgUpdateRoadOperatorResponse, error) {
