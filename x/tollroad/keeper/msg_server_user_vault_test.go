@@ -23,14 +23,13 @@ func TestUserVaultMsgServerCreate(t *testing.T) {
 	creator := "A"
 	for i := 0; i < 5; i++ {
 		expected := &types.MsgCreateUserVault{Creator: creator,
-			Owner:             strconv.Itoa(i),
 			RoadOperatorIndex: strconv.Itoa(i),
 			Token:             strconv.Itoa(i),
 		}
 		_, err := srv.CreateUserVault(wctx, expected)
 		require.NoError(t, err)
 		rst, found := k.GetUserVault(ctx,
-			expected.Owner,
+			expected.Creator,
 			expected.RoadOperatorIndex,
 			expected.Token,
 		)
@@ -79,7 +78,6 @@ func TestUserVaultMsgServerUpdate(t *testing.T) {
 			srv := keeper.NewMsgServerImpl(*k)
 			wctx := sdk.WrapSDKContext(ctx)
 			expected := &types.MsgCreateUserVault{Creator: creator,
-				Owner:             strconv.Itoa(0),
 				RoadOperatorIndex: strconv.Itoa(0),
 				Token:             strconv.Itoa(0),
 			}
@@ -92,7 +90,7 @@ func TestUserVaultMsgServerUpdate(t *testing.T) {
 			} else {
 				require.NoError(t, err)
 				rst, found := k.GetUserVault(ctx,
-					expected.Owner,
+					expected.Creator,
 					expected.RoadOperatorIndex,
 					expected.Token,
 				)
@@ -144,7 +142,6 @@ func TestUserVaultMsgServerDelete(t *testing.T) {
 			wctx := sdk.WrapSDKContext(ctx)
 
 			_, err := srv.CreateUserVault(wctx, &types.MsgCreateUserVault{Creator: creator,
-				Owner:             strconv.Itoa(0),
 				RoadOperatorIndex: strconv.Itoa(0),
 				Token:             strconv.Itoa(0),
 			})

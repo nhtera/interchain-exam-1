@@ -23,7 +23,6 @@ func NewMsgCreateUserVault(
 ) *MsgCreateUserVault {
 	return &MsgCreateUserVault{
 		Creator:           creator,
-		Owner:             owner,
 		RoadOperatorIndex: roadOperatorIndex,
 		Token:             token,
 		Balance:           balance,

@@ -277,8 +277,6 @@ paths:
                     balance:
                       type: string
                       format: uint64
-                    creator:
-                      type: string
               pagination:
                 type: object
                 properties:
@@ -405,8 +403,6 @@ paths:
                   balance:
                     type: string
                     format: uint64
-                  creator:
-                    type: string
         default:
           description: An unexpected error response.
           schema:
@@ -30948,8 +30944,6 @@ definitions:
             balance:
               type: string
               format: uint64
-            creator:
-              type: string
       pagination:
         type: object
         properties:
@@ -31015,8 +31009,6 @@ definitions:
           balance:
             type: string
             format: uint64
-          creator:
-            type: string
   b9lab.tollroad.tollroad.QueryParamsResponse:
     type: object
     properties:
@@ -31055,8 +31047,6 @@ definitions:
       balance:
         type: string
         format: uint64
-      creator:
-        type: string
   cosmos.base.query.v1beta1.PageRequest:
     type: object
     properties:

@@ -28,12 +28,11 @@ func SimulateMsgCreateUserVault(
 		i := r.Int()
 		msg := &types.MsgCreateUserVault{
 			Creator:           simAccount.Address.String(),
-			Owner:             strconv.Itoa(i),
 			RoadOperatorIndex: strconv.Itoa(i),
 			Token:             strconv.Itoa(i),
 		}
 
-		_, found := k.GetUserVault(ctx, msg.Owner, msg.RoadOperatorIndex, msg.Token)
+		_, found := k.GetUserVault(ctx, msg.Creator, msg.RoadOperatorIndex, msg.Token)
 		if found {
 			return simtypes.NoOpMsg(types.ModuleName, msg.Type(), "UserVault already exist"), nil, nil
 		}

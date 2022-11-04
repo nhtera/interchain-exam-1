@@ -14,7 +14,7 @@ func (k msgServer) CreateUserVault(goCtx context.Context, msg *types.MsgCreateUs
 	// Check if the value already exists
 	_, isFound := k.GetUserVault(
 		ctx,
-		msg.Owner,
+		msg.Creator,
 		msg.RoadOperatorIndex,
 		msg.Token,
 	)
@@ -23,7 +23,7 @@ func (k msgServer) CreateUserVault(goCtx context.Context, msg *types.MsgCreateUs
 	}
 
 	var userVault = types.UserVault{
-		Owner:             msg.Owner,
+		Owner:             msg.Creator,
 		RoadOperatorIndex: msg.RoadOperatorIndex,
 		Token:             msg.Token,
 		Balance:           msg.Balance,
