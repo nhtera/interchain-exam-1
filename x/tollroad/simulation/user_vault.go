@@ -81,7 +81,7 @@ func SimulateMsgUpdateUserVault(
 		}
 		msg.Creator = simAccount.Address.String()
 
-		msg.Owner = userVault.Owner
+		msg.Creator = userVault.Owner
 		msg.RoadOperatorIndex = userVault.RoadOperatorIndex
 		msg.Token = userVault.Token
 
@@ -129,7 +129,7 @@ func SimulateMsgDeleteUserVault(
 		}
 		msg.Creator = simAccount.Address.String()
 
-		msg.Owner = userVault.Owner
+		msg.Creator = userVault.Owner
 		msg.RoadOperatorIndex = userVault.RoadOperatorIndex
 		msg.Token = userVault.Token
 

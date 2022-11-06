@@ -15,7 +15,6 @@ var _ sdk.Msg = &MsgCreateUserVault{}
 
 func NewMsgCreateUserVault(
 	creator string,
-	owner string,
 	roadOperatorIndex string,
 	token string,
 	balance uint64,
@@ -62,7 +61,6 @@ var _ sdk.Msg = &MsgUpdateUserVault{}
 
 func NewMsgUpdateUserVault(
 	creator string,
-	owner string,
 	roadOperatorIndex string,
 	token string,
 	balance uint64,
@@ -70,7 +68,6 @@ func NewMsgUpdateUserVault(
 ) *MsgUpdateUserVault {
 	return &MsgUpdateUserVault{
 		Creator:           creator,
-		Owner:             owner,
 		RoadOperatorIndex: roadOperatorIndex,
 		Token:             token,
 		Balance:           balance,
@@ -110,7 +107,6 @@ var _ sdk.Msg = &MsgDeleteUserVault{}
 
 func NewMsgDeleteUserVault(
 	creator string,
-	owner string,
 	roadOperatorIndex string,
 	token string,
 

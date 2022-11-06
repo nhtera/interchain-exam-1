@@ -54,11 +54,9 @@ message MsgCreateUserVaultResponse {}
 
 message MsgUpdateUserVault {
   string creator = 1;
-  string owner = 2;
-  string roadOperatorIndex = 3;
-  string token = 4;
-
-  uint64 balance = 5;
+  string roadOperatorIndex = 2;
+  string token = 3;
+  uint64 balance = 4;
 }
 message MsgUpdateUserVaultResponse {}
 
