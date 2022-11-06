@@ -9,7 +9,6 @@ export interface UserVault {
   roadOperatorIndex: string;
   token: string;
   balance: number;
-  creator: string;
 }
 
 const baseUserVault: object = {
@@ -17,7 +16,6 @@ const baseUserVault: object = {
   roadOperatorIndex: "",
   token: "",
   balance: 0,
-  creator: "",
 };
 
 export const UserVault = {
@@ -33,9 +31,6 @@ export const UserVault = {
     }
     if (message.balance !== 0) {
       writer.uint32(32).uint64(message.balance);
-    }
-    if (message.creator !== "") {
-      writer.uint32(42).string(message.creator);
     }
     return writer;
   },
@@ -58,9 +53,6 @@ export const UserVault = {
           break;
         case 4:
           message.balance = longToNumber(reader.uint64() as Long);
-          break;
-        case 5:
-          message.creator = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -95,11 +87,6 @@ export const UserVault = {
     } else {
       message.balance = 0;
     }
-    if (object.creator !== undefined && object.creator !== null) {
-      message.creator = String(object.creator);
-    } else {
-      message.creator = "";
-    }
     return message;
   },
 
@@ -110,7 +97,6 @@ export const UserVault = {
       (obj.roadOperatorIndex = message.roadOperatorIndex);
     message.token !== undefined && (obj.token = message.token);
     message.balance !== undefined && (obj.balance = message.balance);
-    message.creator !== undefined && (obj.creator = message.creator);
     return obj;
   },
 
@@ -138,11 +124,6 @@ export const UserVault = {
       message.balance = object.balance;
     } else {
       message.balance = 0;
-    }
-    if (object.creator !== undefined && object.creator !== null) {
-      message.creator = object.creator;
-    } else {
-      message.creator = "";
     }
     return message;
   },

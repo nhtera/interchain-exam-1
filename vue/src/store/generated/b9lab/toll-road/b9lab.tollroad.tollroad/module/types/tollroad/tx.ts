@@ -34,7 +34,6 @@ export interface MsgDeleteRoadOperatorResponse {}
 
 export interface MsgCreateUserVault {
   creator: string;
-  owner: string;
   roadOperatorIndex: string;
   token: string;
   balance: number;
@@ -44,7 +43,6 @@ export interface MsgCreateUserVaultResponse {}
 
 export interface MsgUpdateUserVault {
   creator: string;
-  owner: string;
   roadOperatorIndex: string;
   token: string;
   balance: number;
@@ -54,7 +52,6 @@ export interface MsgUpdateUserVaultResponse {}
 
 export interface MsgDeleteUserVault {
   creator: string;
-  owner: string;
   roadOperatorIndex: string;
   token: string;
 }
@@ -563,7 +560,6 @@ export const MsgDeleteRoadOperatorResponse = {
 
 const baseMsgCreateUserVault: object = {
   creator: "",
-  owner: "",
   roadOperatorIndex: "",
   token: "",
   balance: 0,
@@ -577,17 +573,14 @@ export const MsgCreateUserVault = {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.owner !== "") {
-      writer.uint32(18).string(message.owner);
-    }
     if (message.roadOperatorIndex !== "") {
-      writer.uint32(26).string(message.roadOperatorIndex);
+      writer.uint32(18).string(message.roadOperatorIndex);
     }
     if (message.token !== "") {
-      writer.uint32(34).string(message.token);
+      writer.uint32(26).string(message.token);
     }
     if (message.balance !== 0) {
-      writer.uint32(40).uint64(message.balance);
+      writer.uint32(32).uint64(message.balance);
     }
     return writer;
   },
@@ -603,15 +596,12 @@ export const MsgCreateUserVault = {
           message.creator = reader.string();
           break;
         case 2:
-          message.owner = reader.string();
-          break;
-        case 3:
           message.roadOperatorIndex = reader.string();
           break;
-        case 4:
+        case 3:
           message.token = reader.string();
           break;
-        case 5:
+        case 4:
           message.balance = longToNumber(reader.uint64() as Long);
           break;
         default:
@@ -628,11 +618,6 @@ export const MsgCreateUserVault = {
       message.creator = String(object.creator);
     } else {
       message.creator = "";
-    }
-    if (object.owner !== undefined && object.owner !== null) {
-      message.owner = String(object.owner);
-    } else {
-      message.owner = "";
     }
     if (
       object.roadOperatorIndex !== undefined &&
@@ -658,7 +643,6 @@ export const MsgCreateUserVault = {
   toJSON(message: MsgCreateUserVault): unknown {
     const obj: any = {};
     message.creator !== undefined && (obj.creator = message.creator);
-    message.owner !== undefined && (obj.owner = message.owner);
     message.roadOperatorIndex !== undefined &&
       (obj.roadOperatorIndex = message.roadOperatorIndex);
     message.token !== undefined && (obj.token = message.token);
@@ -672,11 +656,6 @@ export const MsgCreateUserVault = {
       message.creator = object.creator;
     } else {
       message.creator = "";
-    }
-    if (object.owner !== undefined && object.owner !== null) {
-      message.owner = object.owner;
-    } else {
-      message.owner = "";
     }
     if (
       object.roadOperatorIndex !== undefined &&
@@ -754,7 +733,6 @@ export const MsgCreateUserVaultResponse = {
 
 const baseMsgUpdateUserVault: object = {
   creator: "",
-  owner: "",
   roadOperatorIndex: "",
   token: "",
   balance: 0,
@@ -768,17 +746,14 @@ export const MsgUpdateUserVault = {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.owner !== "") {
-      writer.uint32(18).string(message.owner);
-    }
     if (message.roadOperatorIndex !== "") {
-      writer.uint32(26).string(message.roadOperatorIndex);
+      writer.uint32(18).string(message.roadOperatorIndex);
     }
     if (message.token !== "") {
-      writer.uint32(34).string(message.token);
+      writer.uint32(26).string(message.token);
     }
     if (message.balance !== 0) {
-      writer.uint32(40).uint64(message.balance);
+      writer.uint32(32).uint64(message.balance);
     }
     return writer;
   },
@@ -794,15 +769,12 @@ export const MsgUpdateUserVault = {
           message.creator = reader.string();
           break;
         case 2:
-          message.owner = reader.string();
-          break;
-        case 3:
           message.roadOperatorIndex = reader.string();
           break;
-        case 4:
+        case 3:
           message.token = reader.string();
           break;
-        case 5:
+        case 4:
           message.balance = longToNumber(reader.uint64() as Long);
           break;
         default:
@@ -819,11 +791,6 @@ export const MsgUpdateUserVault = {
       message.creator = String(object.creator);
     } else {
       message.creator = "";
-    }
-    if (object.owner !== undefined && object.owner !== null) {
-      message.owner = String(object.owner);
-    } else {
-      message.owner = "";
     }
     if (
       object.roadOperatorIndex !== undefined &&
@@ -849,7 +816,6 @@ export const MsgUpdateUserVault = {
   toJSON(message: MsgUpdateUserVault): unknown {
     const obj: any = {};
     message.creator !== undefined && (obj.creator = message.creator);
-    message.owner !== undefined && (obj.owner = message.owner);
     message.roadOperatorIndex !== undefined &&
       (obj.roadOperatorIndex = message.roadOperatorIndex);
     message.token !== undefined && (obj.token = message.token);
@@ -863,11 +829,6 @@ export const MsgUpdateUserVault = {
       message.creator = object.creator;
     } else {
       message.creator = "";
-    }
-    if (object.owner !== undefined && object.owner !== null) {
-      message.owner = object.owner;
-    } else {
-      message.owner = "";
     }
     if (
       object.roadOperatorIndex !== undefined &&
@@ -945,7 +906,6 @@ export const MsgUpdateUserVaultResponse = {
 
 const baseMsgDeleteUserVault: object = {
   creator: "",
-  owner: "",
   roadOperatorIndex: "",
   token: "",
 };
@@ -958,14 +918,11 @@ export const MsgDeleteUserVault = {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
-    if (message.owner !== "") {
-      writer.uint32(18).string(message.owner);
-    }
     if (message.roadOperatorIndex !== "") {
-      writer.uint32(26).string(message.roadOperatorIndex);
+      writer.uint32(18).string(message.roadOperatorIndex);
     }
     if (message.token !== "") {
-      writer.uint32(34).string(message.token);
+      writer.uint32(26).string(message.token);
     }
     return writer;
   },
@@ -981,12 +938,9 @@ export const MsgDeleteUserVault = {
           message.creator = reader.string();
           break;
         case 2:
-          message.owner = reader.string();
-          break;
-        case 3:
           message.roadOperatorIndex = reader.string();
           break;
-        case 4:
+        case 3:
           message.token = reader.string();
           break;
         default:
@@ -1003,11 +957,6 @@ export const MsgDeleteUserVault = {
       message.creator = String(object.creator);
     } else {
       message.creator = "";
-    }
-    if (object.owner !== undefined && object.owner !== null) {
-      message.owner = String(object.owner);
-    } else {
-      message.owner = "";
     }
     if (
       object.roadOperatorIndex !== undefined &&
@@ -1028,7 +977,6 @@ export const MsgDeleteUserVault = {
   toJSON(message: MsgDeleteUserVault): unknown {
     const obj: any = {};
     message.creator !== undefined && (obj.creator = message.creator);
-    message.owner !== undefined && (obj.owner = message.owner);
     message.roadOperatorIndex !== undefined &&
       (obj.roadOperatorIndex = message.roadOperatorIndex);
     message.token !== undefined && (obj.token = message.token);
@@ -1041,11 +989,6 @@ export const MsgDeleteUserVault = {
       message.creator = object.creator;
     } else {
       message.creator = "";
-    }
-    if (object.owner !== undefined && object.owner !== null) {
-      message.owner = object.owner;
-    } else {
-      message.owner = "";
     }
     if (
       object.roadOperatorIndex !== undefined &&

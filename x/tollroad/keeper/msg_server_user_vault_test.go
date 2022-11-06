@@ -49,7 +49,6 @@ func TestUserVaultMsgServerUpdate(t *testing.T) {
 		{
 			desc: "Completed",
 			request: &types.MsgUpdateUserVault{Creator: creator,
-				Owner:             strconv.Itoa(0),
 				RoadOperatorIndex: strconv.Itoa(0),
 				Token:             strconv.Itoa(0),
 			},
@@ -57,7 +56,6 @@ func TestUserVaultMsgServerUpdate(t *testing.T) {
 		{
 			desc: "Unauthorized",
 			request: &types.MsgUpdateUserVault{Creator: "B",
-				Owner:             strconv.Itoa(0),
 				RoadOperatorIndex: strconv.Itoa(0),
 				Token:             strconv.Itoa(0),
 			},
@@ -66,7 +64,6 @@ func TestUserVaultMsgServerUpdate(t *testing.T) {
 		{
 			desc: "KeyNotFound",
 			request: &types.MsgUpdateUserVault{Creator: creator,
-				Owner:             strconv.Itoa(100000),
 				RoadOperatorIndex: strconv.Itoa(100000),
 				Token:             strconv.Itoa(100000),
 			},

@@ -109,7 +109,6 @@ export interface TollroadUserVault {
 
   /** @format uint64 */
   balance?: string;
-  creator?: string;
 }
 
 /**
