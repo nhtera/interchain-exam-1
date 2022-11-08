@@ -31,3 +31,12 @@ func UserVaultKey(
 
 	return key
 }
+
+const (
+	OperatorCreatedEventType              = "new-road-operator-created"
+	OperatorCreatedEventCreator           = "creator"
+	OperatorCreatedEventRoadOperatorIndex = "road-operator-index"
+	OperatorCreatedEventName              = "name"
+	OperatorCreatedEventToken             = "token"
+	OperatorCreatedEventActive            = "active"
+)
